@@ -15,7 +15,7 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const fetchProducts = async (category) => {
-        let url = 'https://backend-beryl-nu-15.vercel.app/products';
+        let url = 'https://tr-1-farhan-labibs-projects.vercel.app/products';
         if (category && category !== 'shop') {
             url += `/${category}`;
         }
