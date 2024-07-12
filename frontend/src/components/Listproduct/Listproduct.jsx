@@ -12,7 +12,7 @@ const Listproduct = () => {
 
   useEffect(() => {
     const fetchInfo = async () => {
-      await fetch('https://backend-beryl-nu-15.vercel.app/allproducts')
+      await fetch('https://tr-1-farhan-labibs-projects.vercel.app/allproducts')
         .then((res) => res.json())
         .then((data) => { setAllProducts(data) });
     };
