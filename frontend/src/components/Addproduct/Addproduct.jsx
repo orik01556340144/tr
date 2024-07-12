@@ -32,17 +32,17 @@ const Addproduct = () => {
   const imageHandler = (e) => {
     const file = e.target.files[0];
     setImage(file);
-    setProductDetails({ ...productDetails, image: file });
   };
 
   const handleSubmit = async () => {
     let responseData;
     let product = { ...productDetails };
-    let formData = new FormData();
-    formData.append('product', image);
 
     // Upload image if there's a new one
     if (image) {
+      let formData = new FormData();
+      formData.append('product', image);
+
       await fetch('https://tr-1-farhan-labibs-projects.vercel.app/upload', {
         method: 'POST',
         headers: {
@@ -113,68 +113,68 @@ const Addproduct = () => {
         </button>
 
         <p>Product Title</p>
-                <input
-                    value={productDetails.name}
-                    onChange={changeHandler}
-                    type="text"
-                    name='name'
-                    placeholder='Type here'
-                />
-            </div>
-            <div className="addproduct-price">
-                <div className="addproduct-itemfields">
-                    <p>Price</p>
-                    <input
-                        value={productDetails.old_price}
-                        onChange={changeHandler}
-                        type="text"
-                        name="old_price"
-                        placeholder='Type here'
-                    />
-                </div>
-                <div className="addproduct-itemfields">
-                    <p>Offer Price</p>
-                    <input
-                        value={productDetails.new_price}
-                        onChange={changeHandler}
-                        type="text"
-                        name="new_price"
-                        placeholder='Type here'
-                    />
-                </div>
-            </div>
-            <div className="addproduct-itemfields">
-                <p>Product Category</p>
-                <select
-                    value={productDetails.category}
-                    onChange={changeHandler}
-                    name="category"
-                    className='add-product-selector'
-                >
-                    <option value="">Select category</option>
-                    <option value="women">Women</option>
-                    <option value="men">Men</option>
-                    <option value="kid">Kid</option>
-                </select>
-            </div>
-            <div className="addproduct-itemfields" onClick={() => document.getElementById('file-input').click()}>
-                <label>
-                    <img
-                        src={image ? URL.createObjectURL(image) : upload_area}
-                        className='addproduct-thumbnail-image'
-                        alt=""
-                    />
-                </label>
-                <input
-                    onChange={imageHandler}
-                    type="file"
-                    name='image'
-                    id='file-input'
-                    style={{ display: 'none' }}
-                />
-            </div>
-            <button onClick={handleSubmit} className='addproduct-btn'>SAVE</button>
+        <input
+          value={productDetails.name}
+          onChange={changeHandler}
+          type="text"
+          name='name'
+          placeholder='Type here'
+        />
+      </div>
+      <div className="addproduct-price">
+        <div className="addproduct-itemfields">
+          <p>Price</p>
+          <input
+            value={productDetails.old_price}
+            onChange={changeHandler}
+            type="text"
+            name="old_price"
+            placeholder='Type here'
+          />
         </div>
+        <div className="addproduct-itemfields">
+          <p>Offer Price</p>
+          <input
+            value={productDetails.new_price}
+            onChange={changeHandler}
+            type="text"
+            name="new_price"
+            placeholder='Type here'
+          />
+        </div>
+      </div>
+      <div className="addproduct-itemfields">
+        <p>Product Category</p>
+        <select
+          value={productDetails.category}
+          onChange={changeHandler}
+          name="category"
+          className='add-product-selector'
+        >
+          <option value="">Select category</option>
+          <option value="women">Women</option>
+          <option value="men">Men</option>
+          <option value="kid">Kid</option>
+        </select>
+      </div>
+      <div className="addproduct-itemfields" onClick={() => document.getElementById('file-input').click()}>
+        <label>
+          <img
+            src={image ? URL.createObjectURL(image) : productDetails.image || upload_area}
+            className='addproduct-thumbnail-image'
+            alt=""
+          />
+        </label>
+        <input
+          onChange={imageHandler}
+          type="file"
+          name='image'
+          id='file-input'
+          style={{ display: 'none' }}
+        />
+      </div>
+      <button onClick={handleSubmit} className='addproduct-btn'>SAVE</button>
+    </div>
   );
 };
 
