@@ -17,7 +17,7 @@ const ShopContextProvider = (props) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('https://backend-beryl-nu-15.vercel.app/allproducts');
+        const response = await fetch('https://tr-1-farhan-labibs-projects.vercel.app/allproducts');
         if (response.ok) {
           const data = await response.json();
           setAll_Product(data);
